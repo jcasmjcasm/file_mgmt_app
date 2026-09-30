@@ -4,7 +4,7 @@ const http = require("node:http");
 const path = require("node:path");
 const { buildPlan, parseMetadata, renderTemplate } = require("./lib/routing");
 
-const HOST = "127.0.0.1";
+const HOST = "0.0.0.0";
 const PORT = Number(process.env.PORT) || 4173;
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
