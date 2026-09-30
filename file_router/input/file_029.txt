@@ -1,0 +1,8 @@
+Document-ID: A029
+Project: ATLAS
+Type: WORKING
+Date: 2026-09-06
+Status: FINAL
+Title: Validation Notes
+
+This Atlas project document records the validation notes. The routing exercise uses only the fields above. The text below this line must not change the route.

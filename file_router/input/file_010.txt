@@ -1,0 +1,8 @@
+Document-ID: A010
+Project: ATLAS
+Type: DELIVERABLE
+Date: 2026-08-17
+Status: DRAFT
+Title: Client Summary
+
+This Atlas project document records the client summary. The routing exercise uses only the fields above. The text below this line must not change the route.

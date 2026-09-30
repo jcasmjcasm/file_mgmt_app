@@ -1,0 +1,10 @@
+{
+  "name": "file-router",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local metadata-based file organizer and archive scheduler",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

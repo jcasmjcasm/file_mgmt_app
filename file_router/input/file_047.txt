@@ -1,0 +1,8 @@
+Document-ID: A047
+Project: ATLAS
+Type: PLANNING
+Date: 2026-09-24
+Status: FINAL
+Title: Release Plan
+
+This Atlas project document records the release plan. The routing exercise uses only the fields above. The text below this line must not change the route.

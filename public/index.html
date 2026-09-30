@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f2f3ee">
+  <title>File Router</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="rail" aria-label="Primary navigation">
+      <a class="brand" href="#queue" aria-label="File Router home"><span class="brand-mark">F</span><span>FIELDNOTE<small>FILE ROUTER</small></span></a>
+      <nav>
+        <a class="nav-link active" href="#queue"><span class="nav-icon">▦</span>Queue</a>
+        <a class="nav-link" href="#rules"><span class="nav-icon">⌘</span>Rules</a>
+        <a class="nav-link" href="#history"><span class="nav-icon">↻</span>History</a>
+      </nav>
+      <div class="rail-bottom"><span class="live-dot"></span><span>LOCAL WORKSPACE</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>WORKSPACE</span><span class="crumb-slash">/</span><strong>FILE ROUTER</strong></div>
+        <div class="server-status"><span class="live-dot"></span>Scheduler active</div>
+      </header>
+
+      <section class="page-heading" id="queue">
+        <div>
+          <p class="eyebrow">DOCUMENT OPERATIONS <span>·</span> 01</p>
+          <h1>File Router<span class="heading-period">.</span></h1>
+          <p class="lede">Sort by metadata. Set the archive date. Keep every move deliberate.</p>
+        </div>
+        <button id="scan-button" class="button button-quiet" type="button"><span class="button-symbol">↻</span> Rescan folder</button>
+      </section>
+
+      <section class="metrics" aria-label="Workspace summary">
+        <article class="metric"><span class="metric-label">IN INPUT</span><strong id="metric-input">—</strong><span class="metric-note">files found</span></article>
+        <article class="metric"><span class="metric-label">READY TO ROUTE</span><strong id="metric-ready">—</strong><span class="metric-note">valid metadata</span></article>
+        <article class="metric"><span class="metric-label">SCHEDULED</span><strong id="metric-scheduled">—</strong><span class="metric-note">awaiting archive</span></article>
+        <article class="metric metric-accent"><span class="metric-label">ARCHIVED</span><strong id="metric-archived">—</strong><span class="metric-note">completed moves</span></article>
+      </section>
+
+      <section class="config-strip" aria-label="Folder locations">
+        <div class="location-field"><label for="input-dir">INPUT FOLDER</label><input id="input-dir" spellcheck="false"></div>
+        <span class="location-arrow" aria-hidden="true">→</span>
+        <div class="location-field"><label for="organized-dir">ORGANIZED</label><input id="organized-dir" spellcheck="false"></div>
+        <span class="location-arrow" aria-hidden="true">→</span>
+        <div class="location-field"><label for="archive-dir">ARCHIVE</label><input id="archive-dir" spellcheck="false"></div>
+      </section>
+
+      <section class="rules-panel" id="rules" aria-labelledby="rules-title">
+        <div class="section-heading compact-heading"><div><p class="eyebrow">CONFIGURATION</p><h2 id="rules-title">Routing rules</h2></div><button id="save-rules" class="text-button" type="button">Save rules <span>↗</span></button></div>
+        <div class="rules-grid">
+          <div class="rule-control"><label for="folder-template">ORGANIZED FOLDER PATTERN</label><input id="folder-template" spellcheck="false"><small>{Project} / {Type} / {year} / {month}</small></div>
+          <div class="rule-control"><label for="name-template">RENAME PATTERN</label><input id="name-template" spellcheck="false"><small>{Date} · {Project} · {Document-ID} · {Title}</small></div>
+          <div class="rule-control"><label for="archive-folder-template">ARCHIVE FOLDER PATTERN</label><input id="archive-folder-template" spellcheck="false"><small>Uses the same metadata fields</small></div>
+          <div class="rule-control archive-date-control"><label for="archive-date">DEFAULT ARCHIVE DATE</label><input id="archive-date" type="date"><small>Override this date on any file below</small></div>
+        </div>
+      </section>
+
+      <section class="queue-section" aria-labelledby="queue-title">
+        <div class="section-heading queue-heading">
+          <div><p class="eyebrow">INPUT FOLDER <span>·</span> <span id="queue-count">0 FILES</span></p><h2 id="queue-title">Review queue</h2></div>
+          <div class="queue-actions"><span id="selection-count" class="selection-count">0 selected</span><button id="apply-button" class="button button-primary" type="button" disabled><span>Apply selected</span><span class="button-arrow">→</span></button></div>
+        </div>
+        <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+        <div class="table-frame">
+          <table>
+            <thead><tr><th class="check-column"><input id="select-all" type="checkbox" aria-label="Select all valid files"></th><th>INPUT FILE</th><th>DOCUMENT</th><th>DESTINATION PREVIEW</th><th>ARCHIVE ON</th><th>STATE</th></tr></thead>
+            <tbody id="file-rows"><tr><td colspan="6" class="empty-state">Scan the input folder to preview files.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="history-section" id="history" aria-labelledby="history-title">
+        <div class="section-heading history-heading"><div><p class="eyebrow">ACTIVITY LOG</p><h2 id="history-title">Recent moves</h2></div><button id="archive-now" class="text-button" type="button">Run due archives <span>↗</span></button></div>
+        <div id="history-list" class="history-list"><p class="history-empty">No file moves yet.</p></div>
+      </section>
+      <footer><span>FILE ROUTER <span class="footer-separator">/</span> LOCAL MODE</span><span>Changes stay on this machine.</span></footer>
+    </main>
+  </div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
